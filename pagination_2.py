@@ -61,19 +61,19 @@ def get_page_data(html):
         csv_write(data)
 
 def main():
-    #pattern = 'https://www.coingecko.com/ru?page={}'
-    # for i in range(1, 11):
-    #     url = pattern.format(str(i))
-    #     get_page_data(get_html(url))  №по номеру пагинации
-    url = 'https://www.coingecko.com/ru?page=1'
-    while True:
-        get_page_data(get_html(url))
-        soup = BeautifulSoup(get_html(url), 'lxml')
-
-        try:
-            pattern ='Next'
-            url = 'https://www.coingecko.com/' + soup.find('ul', class_='pagination').find('a', text=re.compile(pattern)).get('href')
-        except:
-            break
+    pattern = 'https://www.coingecko.com/ru?page={}'
+    for i in range(1, 130):
+        url = pattern.format(str(i))
+        get_page_data(get_html(url))  #№по номеру пагинации
+    # url = 'https://www.coingecko.com/ru?page=1'
+    # while True:
+    #     get_page_data(get_html(url))
+    #     soup = BeautifulSoup(get_html(url), 'lxml')
+    #
+    #     try:
+    #         pattern ='Next'
+    #         url = 'https://www.coingecko.com/' + soup.find('ul', class_='pagination').find('a', text=re.compile(pattern)).get('href')
+    #     except:
+    #         break
 if __name__ == '__main__':
     main()

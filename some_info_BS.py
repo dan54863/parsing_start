@@ -32,7 +32,7 @@ def get_salary(txt):
 def main():
     file = open('index.html').read()
 
-    soup = BeautifulSoup(file,'lxml')
+    soup = BeautifulSoup(file, 'lxml')
     # row = soup.find_all('div', {'data-set':'salary'})
     # row = soup.find_all('div', {'class':'row'})
     # alena = soup.find('div', text='Alena').parent   ПРИМЕР ПОИСКА РОДИТЕЛЕЙ
@@ -49,11 +49,6 @@ def main():
     salaryss = soup.find_all('div', {'data-set': 'salary'})
     for i in salaryss:
         get_salary(i.text)
-
-
-
-
-
 
 
 
